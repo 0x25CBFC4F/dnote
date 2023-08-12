@@ -6,6 +6,9 @@ services:
     image: deadlynote:frontend
     ports:
       - '4200:4200'
+    networks:
+      - proxy
+      - internal
     volumes:
       - ./frontend:/usr/src/frontend
       - /usr/src/frontend/node_modules
@@ -18,6 +21,7 @@ services:
     depends_on:
     - redis
     networks:
+      - proxy
       - internal
     volumes:
     - ./backend:/usr/src/api
@@ -27,9 +31,12 @@ services:
   redis:
     container_name: dnode_redis
     image: redis:4-alpine
+    networks:
+      - proxy
+      - internal
 
 networks:
-  default:
+  proxy:
     name: deadlynote_proxy
     external: true
   internal:

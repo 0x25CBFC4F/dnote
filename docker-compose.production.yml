@@ -3,6 +3,9 @@ services:
   frontend:
     container_name: dnode_frontend
     command: npm run build
+    networks:
+      - proxy
+      - internal
     volumes:
       - type: volume
         source: dnode-frontend
@@ -13,6 +16,9 @@ services:
     image: nginx:1-alpine
     depends_on:
       - frontend
+    networks:
+      - proxy
+      - internal
     volumes:
       - type: bind
         source: ./docker/nginx/vhost.conf
@@ -24,3 +30,11 @@ services:
 
 volumes:
   dnode-frontend:
+
+networks:
+  proxy:
+    name: deadlynote_proxy
+    external: true
+  internal:
+    name: container_internal
+    external: true
