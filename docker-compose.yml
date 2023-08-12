@@ -15,6 +15,8 @@ services:
     image: deadlynote:backend
     depends_on:
     - redis
+    networks:
+      - internal
     volumes:
     - ./backend:/usr/src/api
     - /usr/src/backend/node_modules
@@ -27,3 +29,6 @@ networks:
   default:
     name: deadlynote_proxy
     external: true
+  internal:
+    name: container_internal
+    external:
