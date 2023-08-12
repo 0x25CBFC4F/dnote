@@ -1,6 +1,7 @@
 version: '3.2'
 services:
   frontend:
+    container_name: dnode_frontend
     build: ./frontend
     image: deadlynote:frontend
     ports:
@@ -11,6 +12,7 @@ services:
     command: npm run serve
 
   backend:
+    container_name: dnode_backend
     build: ./backend
     image: deadlynote:backend
     depends_on:
@@ -23,6 +25,7 @@ services:
     command: node index.js
 
   redis:
+    image: dnode_redis
     image: redis:4-alpine
 
 networks:

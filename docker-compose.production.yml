@@ -1,6 +1,7 @@
 version: '3.2'
 services:
   frontend:
+    container_name: dnode_frontend
     command: npm run build
     volumes:
       - type: volume
@@ -8,6 +9,7 @@ services:
         target: /usr/src/frontend
 
   webserver:
+    container_name: dnode_reverseproxy
     image: nginx:1-alpine
     depends_on:
       - frontend
