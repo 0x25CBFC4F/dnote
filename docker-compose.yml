@@ -31,4 +31,4 @@ networks:
     external: true
   internal:
     name: container_internal
-    external:
+    external: true
