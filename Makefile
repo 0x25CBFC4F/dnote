@@ -1,12 +1,9 @@
 CLEAN_CONTAINERS = docker container rm -f dnote_redis_1 dnote_backend_1 dnote_frontend_1
 
-add-network:
-	docker network create deadlynote_proxy
-
-dev: add-network ## Start dev server
+dev: ## Start dev server
 	docker compose up -d --build
 
-prod: add-network ## Start prod server
+prod: ## Start prod server
 	docker compose -f docker-compose.yml -f docker-compose.production.yml up -d --build
 
 clean-prod:
