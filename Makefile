@@ -4,10 +4,10 @@ add-network:
 	docker network create deadlynote_proxy
 
 dev: add-network ## Start dev server
-	docker-compose up -d --build
+	docker compose up -d --build
 
 prod: add-network ## Start prod server
-	docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d --build
+	docker compose -f docker-compose.yml -f docker-compose.production.yml up -d --build
 
 clean-prod:
 	$(CLEAN_CONTAINERS) dnote_webserver_1
