@@ -6,7 +6,7 @@ const md5 = require('md5');
 
 const redis = require('redis');
 
-const redisClient = redis.createClient(6379, 'redis');
+const redisClient = redis.createClient(6379, 'dnode_redis');
 
 redisClient.on('error', (err) => {
   console.log(`Error ${err}`);
