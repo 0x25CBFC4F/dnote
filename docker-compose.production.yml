@@ -4,7 +4,7 @@ services:
     command: npm run build
     volumes:
       - type: volume
-        source: frontend
+        source: dnode-frontend
         target: /usr/src/frontend
 
   webserver:
@@ -19,8 +19,6 @@ services:
       - type: volume
         source: frontend
         target: /var/www/dnote/
-    ports:
-      - "4201:80"
 
 volumes:
-  frontend:
+  dnode-frontend:

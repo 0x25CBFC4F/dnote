@@ -25,5 +25,5 @@ services:
 
 networks:
   default:
-    external:
-      name: deadlynote_proxy
+    name: deadlynote_proxy
+    external: true
